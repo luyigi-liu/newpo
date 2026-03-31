@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>生日快乐</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'ZCOOL KuaiLe', cursive;
+            background: url('bgd.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            transition: background-image 1s ease-in-out;
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        .card h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        .card p {
+            font-size: 1.5rem;
+            color: #fff;
+            animation: fadeIn 1s ease-in-out 0.5s both;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>刘涵笑生日快乐！！！！！</h1>
+        <p>吃饱玩好，天天开心！</p>
+    </div>
+    
+
+    
+    <script>
+        // 背景图片数组
+        const bgImages = [
+            'bgd.jpg',
+            'bgd1.jpg',
+            'bgd2.jpg',
+            'bgd3.jpg'
+        ];
+        
+        // 预加载图片
+        bgImages.forEach(src => {
+            const img = new Image();
+            img.src = src;
+        });
+        
+        let currentIndex = 0;
+        const body = document.body;
+        
+        // 切换背景图片的函数
+        function changeBackground() {
+            currentIndex = (currentIndex + 1) % bgImages.length;
+            body.style.backgroundImage = `url('${bgImages[currentIndex]}')`;
+        }
+        
+        // 每3秒切换一次背景图片
+        setInterval(changeBackground, 3000);
+    </script>
+</body>
+</html>
